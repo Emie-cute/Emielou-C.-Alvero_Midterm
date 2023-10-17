@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+<title>Login Form </title>
+</head>
+
+<body>
+
+<div class="wrapper">
+    <form id = "myform" action = "homepage.html" onsubmit="return validateForm()">
+<h1><center>Login Form</center></h1>
+<label for="username">Username:</label>
+<input type="text" id="username" required><br>
+
+<label for="password">Password:</label>
+ <input type="text" id="password" required><br>
+
+<label for="email">Email:</label>
+<input type="email" id="email" required><br>
+        
+<div class="forget">
+<label for="remember">
+<input type="checkbox" id="remember">
+<p>Remember me</p>
+</label>
+</div>
+
+<button type="submit">Login</button>
+
+<div class="register">
+<p>Don't have an account? <a href="#">Register</a></p>
+</div>
+
+</form>
+</div>
+
+<script>
+    function validateForm() {
+        try {
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+        var email = document.getElementById('email').value;
+
+        var usernamePattern = /^[a-zA-Z0-9_]{5,}$/;
+        var passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+        var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+        if (!usernamePattern.test(username)) {
+            alert('Please enter a valid username (minimum 5 characters, alphanumeric only)');
+            return false;
+        }
+
+        if (!passwordPattern.test(password)) {
+alert("Password must be at least 8 characters long and contain at least one lowercase letter, one uppercase letter, and one number");
+return false;
+
+
+if (!emailPattern.test(email)) {
+    alert('Please enter a valid email address');
+    return false;
+}
+        alert('Login Successfully!');
+        return true;
+    }
+}  catch (error) {
+            alert(error.message);
+
+            return false; // prevent from submission on error
+
+        }  finally {
+
+            //additional action
+        }
+    }
+</script>
+
+<!-- Include Bootstrap CSS and JavaScript -->
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>
